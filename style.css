@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+body{
+    background-color: #ece6c2 ;
+    text-align: center;
+    font-family: 'Righteous', cursive;
+}
+.header-text{
+    font-family: 'bottleneck-regular', sans-serif;
+    font-weight: lighter;
+    color: #d2a24c;
+    text-shadow: 4px 4px #6f5643;
+    font-size:8vw;
+}
+.level{
+    font-size:6vw;
+    color:#6f5643;
+    display: flex;
+    flex-direction: column;
+}
+.difficult{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 #board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -16,4 +41,203 @@
 
 button {
     margin-top: 10px;
+}
+
+/* Small devices such as large phones (640px and up) */
+@media only screen and (max-width: 40em) {}
+
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (max-width: 48em) {
+    .header-text{
+        font-size: 24vw;
+    }
+}
+
+/* Large devices such as laptops (1024px and up) */
+@media only screen and (min-width: 64em) {}
+
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 80em) {}
+
+/**/
+html {
+    box-sizing: border-box;
+   /* font-family: 'Arial', sans-serif;*/
+    font-size: 100%;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+    margin:0;
+    padding:0;
+  }
+  .mid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top:1em;
+  }
+  
+  
+  /* Switch starts here */
+  .rocker {
+    display: inline-block;
+    position: relative;
+    /*
+    SIZE OF SWITCH
+    ==============
+    All sizes are in em - therefore
+    changing the font-size here
+    will change the size of the switch.
+    See .rocker-small below as example.
+    */
+    font-size: 0.75em; /* Sizes the switch */
+    margin-top: -1em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #888;
+    width: 7em;
+    height: 4em;
+    overflow: hidden;
+    border-bottom: 0.5em solid #eee;
+    /*box-shadow: 7px 12px #888888;*/
+  }
+  
+  
+  .rocker::before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999;
+    border: 0.5em solid #eee;
+    border-bottom: 0;
+  }
+  
+  .rocker input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .switch-left,
+  .switch-right {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5em;
+    width: 3em;
+    transition: 0.2s;
+  }
+  
+  .switch-left {
+    height: 2.4em;
+    width: 2.75em;
+    left: 0.85em;
+    bottom: 0.4em;
+    background-color: #ddd;
+    transform: rotate(15deg) skewX(15deg);
+  }
+  
+  .switch-right {
+    right: 0.5em;
+    bottom: 0;
+    background-color: #cc6b49;
+    color: #fff;
+  }
+  
+  .switch-left::before,
+  .switch-right::before {
+    content: "";
+    position: absolute;
+    width: 0.4em;
+    height: 2.45em;
+    bottom: -0.45em;
+    background-color: #ccc;
+    transform: skewY(-65deg);
+  }
+  
+  .switch-left::before {
+    left: -0.4em;
+  }
+  
+  .switch-right::before {
+    right: -0.375em;
+    background-color: transparent;
+    transform: skewY(65deg);
+  }
+  
+  input:checked + .switch-left {
+    background-color: #73bda8;
+    color: #fff;
+    bottom: 0px;
+    left: 0.5em;
+    height: 2.5em;
+    width: 3em;
+    transform: rotate(0deg) skewX(0deg);
+  }
+  
+  input:checked + .switch-left::before {
+    background-color: transparent;
+    width: 3.0833em;
+  }
+  
+  input:checked + .switch-left + .switch-right {
+    background-color: #ddd;
+    color: #888;
+    bottom: 0.4em;
+    right: 0.8em;
+    height: 2.4em;
+    width: 2.75em;
+    transform: rotate(-15deg) skewX(-15deg);
+  }
+  
+  input:checked + .switch-left + .switch-right::before {
+    background-color: #ccc;
+  }
+  
+  /* Keyboard Users */
+  input:focus + .switch-left {
+    color: #333;
+  }
+  
+  input:checked:focus + .switch-left {
+    color: #fff;
+  }
+  
+  input:focus + .switch-left + .switch-right {
+    color: #fff;
+  }
+  
+  input:checked:focus + .switch-left + .switch-right {
+    color: #333;
+  }
+.bttn{
+  border: 4px solid #282828;
+  padding: 1rem;
+  background-color: #cc6b49;
+  color:#282828;
+  font-weight: 700;
+}
+
+hr.style-eight {
+  overflow: visible; /* For IE */
+  margin-top:10px;
+  border: none;
+  border-top: medium double #333;
+  text-align: center;
+  font-size: 0.5em;
+}
+hr.style-eight:after {
+  font-family: Arial, Helvetica, sans-serif;
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 1 5em;
 }

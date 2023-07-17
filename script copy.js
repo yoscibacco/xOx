@@ -1,6 +1,7 @@
+
 // Switch to the game page
 function startGame() {
-    difficultyLevel = document.getElementById('difficulty').value;
+    //difficultyLevel = document.getElementById('difficulty').value;
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = player;
     gameActive = true;
@@ -36,7 +37,7 @@ let difficultyLevel = 'easy';
 
 // Get DOM elements
 const cells = Array.from(document.getElementsByClassName('cell'));
-
+const checkBox = document.getElementById("levelChoose");
 // Add event listeners to each cell
 cells.forEach(cell => cell.addEventListener('click', makeMove));
 
@@ -136,10 +137,18 @@ function minimax(board, depth, isMaximizing) {
 }
 
 /* ---------------------------------------------------------- */
-function computerMove() {
+/*function computerMove() {
     if (difficultyLevel === 'easy') {
         computerMoveEasy();
     } else if(difficultyLevel === 'hard') {
+        computerMoveHard();
+    } 
+}
+*/
+function computerMove() {
+    if (checkBox.checked == true) {
+        computerMoveEasy();
+    } else if(checkBox.checked == false) {
         computerMoveHard();
     } 
 }
