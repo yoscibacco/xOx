@@ -6,27 +6,28 @@
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://www.dafontfree.net/embed/Ym90dGxlbmVjay1yZWd1bGFyJmRhdGEvNDkvYi8zOTg1MS9Cb3R0bGVuZWNrLm90Zg" rel="stylesheet" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 </head>
 <body>
     <div class="header-text">Tic Tac Toe</div>
     <div id="settings">
         <label class="level">
-            Difficulty Level
-            <hr class="style-eight">
-           <!-- <select id="difficulty">
-                <option value="easy">Easy</option>
-                <option value="hard">Hard</option>
-            </select>-->
-            <div class="difficult">
-                <div class="mid">
+            <h3>Choose Difficulty Level</h3>
 
-                    <label class="rocker">
-                      <input type="checkbox" id="levelChoose" checked>
-                      <span class="switch-left">easy</span>
-                      <span class="switch-right">hard</span>
-                    </label>
-                  
-                  </div>
+            <hr/>
+            <div class="difficult">
+                <div class="chckflx">
+                    <input type="checkbox" class="diffchck" id="easy" checked>
+                    <label class="difflbl" for="easy"><div class="tick"></div></label>
+                    <label for="easy">Easy</label>
+                </div>
+                <div class="chckflx">
+                    <input type="checkbox" class="diffchck" id="hard">
+                    <label class="difflbl" for="hard"><div class="tick"></div></label>
+                    <label for="hard">Hard</label>
+                </div>
             </div>
         </label>
         <button class="bttn" onclick="startGame()">Start Game</button>
@@ -43,9 +44,12 @@
             <div class="cell" onclick="makeMove(7)"></div>
             <div class="cell" onclick="makeMove(8)"></div>
         </div>
-        <button onclick="resetBoard()">Reset</button>
-        <button onclick="backToMain()">Main Page</button>
+        <button class="bttn" onclick="resetBoard()">Reset</button>
+        <button class="bttn" onclick="backToMain()">Main Page</button>
     </div>
+
+
+
     <script src="script copy.js"></script>
 </body>
 </html>

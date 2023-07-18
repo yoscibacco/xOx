@@ -1,4 +1,23 @@
+//diff checked
+const inps=document.querySelectorAll(".diffchck");
+inps.forEach(e=>e.addEventListener("click",ev=>{
+  inps.forEach(c=>{if(c!==e) c.checked=false})
+}))
 
+
+$(function() { 
+    $('.diffchck').bind('click',function() {
+        if($(this).prop('checked') === false) {
+          $(this).prop('checked', true);
+        }
+        $('.diffchck').not(this).prop("checked", false);
+    });
+});
+
+//
+let easy = document.getElementById('easy');
+let hard = document.getElementById('hard');
+//
 // Switch to the game page
 function startGame() {
     //difficultyLevel = document.getElementById('difficulty').value;
@@ -10,6 +29,8 @@ function startGame() {
     });
     document.getElementById('settings').style.display = 'none';
     document.getElementById('game').style.display = 'block';
+    document.getElementById('settings').classList.add("fadeIn");
+    document.getElementById('game').classList.add("fadeIn");
 }
 
 function backToMain() {
@@ -46,6 +67,7 @@ function makeMove(index) {
     if (gameActive && board[index] === '') {
         board[index] = currentPlayer;
         cells[index].innerText = currentPlayer;
+        cells[index].style.backgroundColor = currentPlayer === player ? '#F3AA60' : '#A0BFE0';
         if (checkWin()) {
             gameActive = false;
             setTimeout(() => {
@@ -76,6 +98,7 @@ function computerMoveEasy() {
     }
     setTimeout(() => {
         makeMove(index);
+        cells[index].style.backgroundColor = '#A0BFE0';
     }, 300);
 }
 
@@ -101,6 +124,7 @@ function computerMoveHard() {
     }
     setTimeout(() => {
         makeMove(bestMove);
+        cells[index].style.backgroundColor = '#A0BFE0';
     }, 300);
 }
 
@@ -146,9 +170,9 @@ function minimax(board, depth, isMaximizing) {
 }
 */
 function computerMove() {
-    if (checkBox.checked == true) {
+    if (easy.checked == true) {
         computerMoveEasy();
-    } else if(checkBox.checked == false) {
+    } else if(hard.checked == true) {
         computerMoveHard();
     } 
 }
@@ -182,6 +206,7 @@ function resetBoard() {
     gameActive = true;
     cells.forEach(cell => {
       cell.innerText = '';
+      cell.style.backgroundColor = '#FAF0D7';
     });
   }
   

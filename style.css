@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 body{
     background-color: #ece6c2 ;
+    color:#6f5643;
     text-align: center;
-    font-family: 'Righteous', cursive;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 .header-text{
     font-family: 'bottleneck-regular', sans-serif;
@@ -11,32 +12,53 @@ body{
     text-shadow: 4px 4px #6f5643;
     font-size:8vw;
 }
-.level{
+.level h3{
     font-size:6vw;
-    color:#6f5643;
-    display: flex;
-    flex-direction: column;
+    /*display: flex;
+    flex-direction: column;*/
+    font-family: 'Righteous', cursive;
 }
-.difficult{
+
+/*difficult{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}*/
+.difficult{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.chckflx{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size:6vw;
+  font-family: 'Righteous', cursive;
+  margin:5px;
 }
 #board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
     width: 300px;
-    height: 300px;
+    margin: auto auto auto 2rem;
 }
 
 .cell {
-    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    background-color: #FAF0D7; /* Fire color */
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 30px;
+    align-items: center;
+    font-size: 48px;
+    color: #74685f;
     cursor: pointer;
+    border-radius: 15px;
 }
 
 button {
@@ -59,163 +81,7 @@ button {
 /* Largest devices such as desktops (1280px and up) */
 @media only screen and (min-width: 80em) {}
 
-/**/
-html {
-    box-sizing: border-box;
-   /* font-family: 'Arial', sans-serif;*/
-    font-size: 100%;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-    margin:0;
-    padding:0;
-  }
-  .mid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top:1em;
-  }
-  
-  
-  /* Switch starts here */
-  .rocker {
-    display: inline-block;
-    position: relative;
-    /*
-    SIZE OF SWITCH
-    ==============
-    All sizes are in em - therefore
-    changing the font-size here
-    will change the size of the switch.
-    See .rocker-small below as example.
-    */
-    font-size: 0.75em; /* Sizes the switch */
-    margin-top: -1em;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    color: #888;
-    width: 7em;
-    height: 4em;
-    overflow: hidden;
-    border-bottom: 0.5em solid #eee;
-    /*box-shadow: 7px 12px #888888;*/
-  }
-  
-  
-  .rocker::before {
-    content: "";
-    position: absolute;
-    top: 0.5em;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #999;
-    border: 0.5em solid #eee;
-    border-bottom: 0;
-  }
-  
-  .rocker input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .switch-left,
-  .switch-right {
-    cursor: pointer;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.5em;
-    width: 3em;
-    transition: 0.2s;
-  }
-  
-  .switch-left {
-    height: 2.4em;
-    width: 2.75em;
-    left: 0.85em;
-    bottom: 0.4em;
-    background-color: #ddd;
-    transform: rotate(15deg) skewX(15deg);
-  }
-  
-  .switch-right {
-    right: 0.5em;
-    bottom: 0;
-    background-color: #cc6b49;
-    color: #fff;
-  }
-  
-  .switch-left::before,
-  .switch-right::before {
-    content: "";
-    position: absolute;
-    width: 0.4em;
-    height: 2.45em;
-    bottom: -0.45em;
-    background-color: #ccc;
-    transform: skewY(-65deg);
-  }
-  
-  .switch-left::before {
-    left: -0.4em;
-  }
-  
-  .switch-right::before {
-    right: -0.375em;
-    background-color: transparent;
-    transform: skewY(65deg);
-  }
-  
-  input:checked + .switch-left {
-    background-color: #73bda8;
-    color: #fff;
-    bottom: 0px;
-    left: 0.5em;
-    height: 2.5em;
-    width: 3em;
-    transform: rotate(0deg) skewX(0deg);
-  }
-  
-  input:checked + .switch-left::before {
-    background-color: transparent;
-    width: 3.0833em;
-  }
-  
-  input:checked + .switch-left + .switch-right {
-    background-color: #ddd;
-    color: #888;
-    bottom: 0.4em;
-    right: 0.8em;
-    height: 2.4em;
-    width: 2.75em;
-    transform: rotate(-15deg) skewX(-15deg);
-  }
-  
-  input:checked + .switch-left + .switch-right::before {
-    background-color: #ccc;
-  }
-  
-  /* Keyboard Users */
-  input:focus + .switch-left {
-    color: #333;
-  }
-  
-  input:checked:focus + .switch-left {
-    color: #fff;
-  }
-  
-  input:focus + .switch-left + .switch-right {
-    color: #fff;
-  }
-  
-  input:checked:focus + .switch-left + .switch-right {
-    color: #333;
-  }
+
 .bttn{
   border: 4px solid #282828;
   padding: 1rem;
@@ -224,20 +90,154 @@ html {
   font-weight: 700;
 }
 
-hr.style-eight {
-  overflow: visible; /* For IE */
-  margin-top:10px;
+hr {
   border: none;
-  border-top: medium double #333;
+  border-top: 3px double #333;
+  color: #333;
+  overflow: visible;
   text-align: center;
-  font-size: 0.5em;
+  height: 5px;
+  width:50%;
 }
-hr.style-eight:after {
-  font-family: Arial, Helvetica, sans-serif;
-  content: "§";
-  display: inline-block;
+
+hr:after {
+  background: #ece6c2;
+  content: '§';
+  padding: 0 4px;
   position: relative;
-  top: -0.7em;
-  font-size: 1.5em;
-  padding: 1 5em;
+  top: -13px;
+}
+
+
+:root {
+	--checkbox-size: 50px;
+	--bg-color: #ffa69e;
+	--checkbox-color:  #d2a24c;
+	--hover-color:  #6f5643;
+	--tick-color:  #d2a24c;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+
+}
+
+
+.difflbl {
+	display: inline-block;
+	margin: 0 calc(var(--checkbox-size) * 0.25);
+	width: var(--checkbox-size);
+	height: var(--checkbox-size);
+	border: calc(var(--checkbox-size) * 0.125) solid var(--checkbox-color);
+	/*border-radius: 12.5%;*/
+	-webkit-transition: 400ms 100ms ease-out;
+	-o-transition: 400ms 100ms ease-out;
+	transition: 400ms 100ms ease-out;
+}
+
+.difflbl:hover {
+	border-color: var(--hover-color);
+}
+input[type="checkbox"] {
+	position: absolute;
+	left: -1000px;
+}
+
+.tick {
+	position: relative;
+	right: calc(var(--checkbox-size) * -0.5);
+	top: calc(var(--checkbox-size) * -0.25);
+	width: calc(var(--checkbox-size) * 0.25);
+	height: calc(var(--checkbox-size) * 0.75);
+	border-right: calc(var(--checkbox-size) * 0.25) solid var(--tick-color);
+	border-bottom: calc(var(--checkbox-size) * 0.25) solid var(--tick-color);
+	-webkit-transform: rotate(45deg) scale(0);
+	-ms-transform: rotate(45deg) scale(0);
+	transform: rotate(45deg) scale(0);
+	opacity: 0;
+	-webkit-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.5);
+	-o-transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.5);
+	transition: all 600ms cubic-bezier(0.175, 0.885, 0.32, 1.5);
+}
+
+.tick:before {
+	content: "";
+	position: absolute;
+	left: calc(var(--checkbox-size) * -0.125);
+	bottom: calc(var(--checkbox-size) * -0.25);
+	border: calc(var(--checkbox-size) * 0.125) solid var(--tick-color);
+	/*border-radius: 50%;*/
+}
+
+.tick:after {
+	content: "";
+	position: absolute;
+	right: calc(var(--checkbox-size) * -0.25);
+	top: calc(var(--checkbox-size) * -0.125);
+	border: calc(var(--checkbox-size) * 0.125) solid var(--tick-color);
+	/*border-radius: 50%;*/
+}
+
+input[type="checkbox"]:checked + .difflbl .tick {
+	opacity: 1;
+	-webkit-transform: rotate(45deg) scale(1);
+	-ms-transform: rotate(45deg) scale(1);
+	transform: rotate(45deg) scale(1);
+}
+input[type="checkbox"]:checked + .difflbl{
+  border-color: var(--hover-color);
+}
+
+input[type="checkbox"]:focus + .difflbl {
+	-webkit-animation-name: cb-pop;
+	animation-name: cb-pop;
+	-webkit-animation-duration: 400ms;
+	animation-duration: 400ms;
+	-webkit-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+}
+
+@-webkit-keyframes cb-pop {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	33% {
+		-webkit-transform: scale(0.9);
+		transform: scale(0.9);
+	}
+	66% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	}
+	100% {
+		tranform: scale(1);
+	}
+}
+
+@keyframes cb-pop {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	33% {
+		-webkit-transform: scale(0.9);
+		transform: scale(0.9);
+	}
+	66% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	}
+	100% {
+		tranform: scale(1);
+	}
+}
+
+.fadeIn{
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;
 }
