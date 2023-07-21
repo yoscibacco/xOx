@@ -36,6 +36,9 @@ function startGame() {
 function backToMain() {
     document.getElementById('settings').style.display = 'block';
     document.getElementById('game').style.display = 'none';
+    cells.forEach(cell => {
+        cell.style.backgroundColor = '#FAF0D7';
+      });
 }
 
 // Define the game board
