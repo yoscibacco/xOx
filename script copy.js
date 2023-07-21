@@ -1,3 +1,6 @@
+//sweetalert
+
+
 //diff checked
 const inps=document.querySelectorAll(".diffchck");
 inps.forEach(e=>e.addEventListener("click",ev=>{
@@ -74,14 +77,44 @@ function makeMove(index) {
         if (checkWin()) {
             gameActive = false;
             setTimeout(() => {
-                alert(currentPlayer + ' wins!');
+//                alert(currentPlayer + ' wins!');
+                Swal.fire({
+                    text: currentPlayer + ' wins!',
+                    confirmButtonText: 'Continue',
+                    confirmButtonColor: '#cc6b49',
+                }).then(function() {
+                
+                        board = ['', '', '', '', '', '', '', '', ''];
+                        currentPlayer = player;
+                        gameActive = true;
+                        cells.forEach(cell => {
+                          cell.innerText = '';
+                          cell.style.backgroundColor = '#FAF0D7';
+                        });
+                      
+                });
             }, 300);
             return;
         }
         if (checkTie()) {
             gameOver = false;
             setTimeout(() => {
-                alert('It\'s a tie!');
+//                alert('It\'s a tie!');
+                Swal.fire({
+                    text: 'It\'s a tie!',
+                    confirmButtonText: 'Continue',
+                    confirmButtonColor: '#cc6b49',
+                }).then(function() {
+                
+                        board = ['', '', '', '', '', '', '', '', ''];
+                        currentPlayer = player;
+                        gameActive = true;
+                        cells.forEach(cell => {
+                          cell.innerText = '';
+                          cell.style.backgroundColor = '#FAF0D7';
+                        });
+                      
+                });
             }, 300);
             return;
         }
