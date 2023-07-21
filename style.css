@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@font-face {
+    font-family: bottleneck-regular;
+    src: url("fonts/Bottleneck.otf") format("opentype");
+}
 body{
     background-color: #ece6c2 ;
     color:#6f5643;
