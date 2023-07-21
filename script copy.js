@@ -1,6 +1,6 @@
 //score
-let scorePlayer1 = 0;
-let scorePlayer2 = 0;
+let scorePlayerX = 0;
+let scorePlayerO = 0;
 
 //diff checked
 const inps=document.querySelectorAll(".diffchck");
@@ -43,8 +43,10 @@ function backToMain() {
     cells.forEach(cell => {
         cell.style.backgroundColor = '#FAF0D7';
       });
-    document.getElementById('player1').textContent = `Player 1: 0`;
-    document.getElementById('player2').textContent = `Player 1: 0`;
+    document.getElementById('playerX').textContent = `0`;
+    document.getElementById('playerO').textContent = `0`;
+    scorePlayerX = 0;
+    scorePlayerO= 0;
 }
 
 // Define the game board
@@ -252,10 +254,10 @@ function resetBoard() {
 
   function updateScore() {
     if (currentPlayer === 'X') {
-      scorePlayer1++;
-      document.getElementById('player1').textContent = `Player 1: ${scorePlayer1}`;
+      scorePlayerX++;
+      document.getElementById('playerX').textContent = `${scorePlayerX}`;
     } else {
-      scorePlayer2++;
-      document.getElementById('player2').textContent = `Player 2: ${scorePlayer2}`;
+      scorePlayerO++;
+      document.getElementById('playerO').textContent = `${scorePlayerO}`;
     }
   }
