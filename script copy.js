@@ -127,7 +127,6 @@ function computerMoveHard() {
     }
     setTimeout(() => {
         makeMove(bestMove);
-        cells[index].style.backgroundColor = '#A0BFE0';
     }, 300);
 }
 
