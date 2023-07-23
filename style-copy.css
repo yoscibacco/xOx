@@ -15,162 +15,36 @@ body{
     font-weight: lighter;
     color: #d2a24c;
     text-shadow: 4px 4px #6f5643;
-	font-size: 24vw;
+    font-size: 24vw;
 }
-main{
-	display: flex !important;
-	flex-direction: row;
-	justify-content: space-between;
-	align-content: stretch;
-}
-.noContent{
-	width: 33%;
-}
-.content{
-	width: 33%;
-}
+
+/*Settings Page*/
 .level h3{
-	font-size: 2vw;
-    /*display: flex;
-    flex-direction: column;*/
+	font-size: 6vw;
     font-family: 'Righteous', cursive;
 }
 
-/*difficult{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}*/
-.difficult{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.chckflx{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size:3vw;
-  font-family: 'Righteous', cursive;
-  margin:5px;
-}
-#board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    width: 300px;
-    margin: auto;
-}
-
-.cell {
-    width: 100px;
-    height: 100px;
-    background-color: #FAF0D7; /* Fire color */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 48px;
-    color: #74685f;
-    cursor: pointer;
-    border-radius: 15px;
-}
-
-button {
-    margin-top: 10px;
-}
-
-/* Small devices such as large phones (640px and up) */
-@media only screen and (min-width: 40em) {}
-
-/* Medium devices such as tablets (768px and up) */
-@media only screen and (max-width: 48em) {
-    .header-text{
-        font-size: 24vw;
-    }
-	.noContent{
-		display: none;
-	}
-	.content{
-		width: 100% !important;
-	}
-	.header-text{
-		font-size: 24vw;
-	}
-	.level h3{
-		font-size:6vw;
-	}
-	.chckflx{
-		font-size:6vw;
-	}
-
-}
-
-/* Large devices such as laptops (1024px and up) */
-@media only screen and (min-width: 64em) {
-	.header-text{
-		font-size: 8vw;
-	}
-}
-
-/* Largest devices such as desktops (1280px and up) */
-@media only screen and (min-width: 80em) {
-	main{
-		display: flex !important;
-		flex-direction: row;
-		justify-content: space-between;
-		align-content: stretch;
-	}
-	.noContent{
-		width: 33%;
-	}
-	.content{
-		width: 33%;
-	}
-	.header-text{
-		font-size: 8vw;
-	}
-	.level h3{
-		font-size:3vw;
-		margin:0;
-	}
-	.chckflx{
-		font-size:3vw;
-	}
-
-}
-
-
-.bttn{
-  border: 4px solid #282828;
-  padding: 1rem;
-  background-color: #cc6b49;
-  color:#282828;
-  font-weight: 700;
-}
-
 hr {
-  border: none;
-  border-top: 3px double #333;
-  color: #333;
-  overflow: visible;
-  text-align: center;
-  height: 5px;
-  width:100%;
-}
+    border: none;
+    border-top: 3px double #333;
+    color: #333 !important;
+    overflow: visible;
+    text-align: center;
+    height: 5px !important;
+    width:50%;
+  }
+  
+  hr:after {
+    background: #ece6c2;
+    content: '§';
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+  }
 
-hr:after {
-  background: #ece6c2;
-  content: '§';
-  padding: 0 4px;
-  position: relative;
-  top: -13px;
-}
+  /*Difficult Checks*/
 
-
-:root {
+  :root {
 	--checkbox-size: 50px;
 	--bg-color: #ffa69e;
 	--checkbox-color:  #d2a24c;
@@ -178,11 +52,21 @@ hr:after {
 	--tick-color:  #d2a24c;
 }
 
-body {
-	width: 100vw;
-	height: 100vh;
-}
-
+.difficult{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .chckflx{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size:6vw;
+    font-family: 'Righteous', cursive;
+    margin:5px;
+  }
 
 .difflbl {
 	display: inline-block;
@@ -296,11 +180,42 @@ input[type="checkbox"]:focus + .difflbl {
 	}
 }
 
-.fadeIn{
-  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s;
+/*Buttons*/
+button {
+    margin-top: 10px;
+}
+.bttn{
+    border: 4px solid #282828;
+    padding: 1rem;
+    background-color: #cc6b49;
+    color:#282828;
+    font-weight: 700;
+  }
+
+  /*Game Page*/
+
+  #board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 300px;
+    margin: auto;
 }
 
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #FAF0D7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: #74685f;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+/*ScoreBoard*/
 #scoreboard{
 	font-family: 'Righteous', cursive;
 }
@@ -319,4 +234,50 @@ input[type="checkbox"]:focus + .difflbl {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+}
+
+/*Transition*/
+
+.fadeIn{
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s;
+  }
+
+/*Responsive*/ 
+
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 48em) {
+	.header-text{
+		font-size: 8vw;
+	}
+    .level h3{
+		font-size:3vw;
+		margin:0;
+	}
+    hr{
+        width: 30%;
+    }
+    .chckflx{
+		font-size:3vw;
+	}
+    .scoreBoardSide{
+        width: 30px;
+    }
+}
+
+/* Large devices such as laptops (1024px and up) */
+@media only screen and (min-width: 64em) {}
+
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 80em) {}
+
+/*SweetAlert*/
+
+.swal2-popup{
+    background-color: #F4E0B9 !important;
+}
+.swal2-html-container{
+    font-family: 'Righteous', cursive;
+    color: #6f5643;
+    font-size: 2em !important;
 }
