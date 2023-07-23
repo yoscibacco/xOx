@@ -1,3 +1,82 @@
+/*MainPage*/
+function personToPerson(){
+    document.getElementById('betweenWho').style.display = 'none';
+    document.getElementById('gamePeople').style.display = 'block';
+    document.getElementById('betweenWho').classList.add("fadeIn");
+    document.getElementById('gamePeople').classList.add("fadeIn");
+}
+function personToComputer(){
+    document.getElementById('betweenWho').style.display = 'none';
+    document.getElementById('settings').style.display = 'block';
+    document.getElementById('betweenWho').classList.add("fadeIn");
+    document.getElementById('settings').classList.add("fadeIn");
+}
+
+
+/*2 person*/
+let boardPeople = ['','','','','','','','',''];
+let moves = 0;
+let curPlayer= 'X';
+let gameIsActive = true;
+const cellsPeople = Array.from(document.getElementsByClassName('cellPeople'));
+// Add event listeners to each cell
+
+function personMove(index) {
+    if (gameIsActive && boardPeople[index] === ''){
+    
+    boardPeople[index] = curPlayer;
+    moves++;
+    cellsPeople[index].innerText = curPlayer;
+    //document.getElementsByClassName('cellPeople')[index].textContent = curPlayer;
+    
+  
+    if (checkWinner()) {
+        gameIsActive = false;
+        setTimeout(() => {
+            announceWinner(curPlayer) 
+        },300);
+      
+      return;
+    }
+  
+    if (moves === 9) {
+        gameIsActive = false;
+      announceDraw();
+      return;
+    }
+    curPlayer = (curPlayer === 'X') ? 'O' : 'X';
+    }
+}
+function checkWinner() {
+    const winConditions = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+      [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+      [0, 4, 8], [2, 4, 6] // diagonals
+    ];
+  
+    for (let condition of winConditions) {
+      if (
+        boardPeople[condition[0]] !== '' &&
+        boardPeople[condition[0]] === boardPeople[condition[1]] &&
+        boardPeople[condition[0]] === boardPeople[condition[2]]
+      ) {
+        return true;
+      }
+    }
+  
+    return false;
+  }
+  
+  function announceWinner(player) {
+    alert(`Player ${player} wins!`);
+  }
+  
+  function announceDraw() {
+    alert("It's a draw!");
+  }
+  
+
+
 //score
 let scorePlayerX = 0;
 let scorePlayerO = 0;
@@ -103,7 +182,7 @@ function makeMove(index) {
             return;
         }
         if (checkTie()) {
-            gameOver = false;
+            gameActive = false;
             setTimeout(() => {
 //                alert('It\'s a tie!');
                 Swal.fire({
@@ -150,6 +229,7 @@ function computerMoveEasy() {
 
 
 /* ---------------------------------------------------------- */
+
 function computerMoveHard() {
     let bestScore = -Infinity;
     let bestMove;
@@ -200,6 +280,8 @@ function minimax(board, depth, isMaximizing) {
         return bestScore;
     }
 }
+
+
 
 /* ---------------------------------------------------------- */
 /*function computerMove() {

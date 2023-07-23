@@ -197,7 +197,7 @@ button {
   #board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    /*grid-gap: 10px;*/
     width: 300px;
     margin: auto;
 }
@@ -212,7 +212,9 @@ button {
     font-size: 48px;
     color: #74685f;
     cursor: pointer;
+	border:2.5px solid #ece6c2;
     border-radius: 15px;
+	margin:1px;
 }
 
 /*ScoreBoard*/
@@ -289,3 +291,45 @@ color:#282828 !important;
 font-weight: 700;
 border-radius: 0 !important;
 }
+
+/*Between Who*/
+.between-who{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.between-who-button{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	background-color:#cc6b49;
+	border: 4px solid #282828;
+	color:#282828;
+	padding: 1rem;
+	width: 100px;
+	margin: 0.25rem;
+}
+.between-who-button i{
+	margin: 0 1px;
+}
+
+
+#boardPeople {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 10px;
+	width: 300px;
+	margin-bottom: 10px;
+  }
+  .cellPeople {
+	border: 1px solid black;
+	height: 100px;
+	font-size: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+  }

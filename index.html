@@ -12,53 +12,79 @@
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/screen.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/user.css' rel='stylesheet'>
 </head>
 <body>
     <div class="header-text">Tic Tac Toe</div>
     <main>
         <div class="noContent"></div>
         <div class="content">
-        <div id="settings">
-            <label class="level">
-                <h3>Choose Difficulty Level</h3>
+            <div class="between-who" id="betweenWho">
+                <button class="between-who-button" onclick="personToPerson()">
+                    <i class="gg-user"></i>
+                    /
+                    <i class="gg-user"></i>
+                </button>
+                <button class="between-who-button" onclick="personToComputer()">
+                    <i class="gg-user"></i>
+                    /
+                    <i class="gg-screen"></i>
+                </button>
+            </div>
+            <div id="settings" style="display: none;">
+                <label class="level">
+                    <h3>Choose Difficulty Level</h3>
 
-                <hr/>
-                <div class="difficult">
-                    <div class="chckflx">
-                        <input type="checkbox" class="diffchck" id="easy" checked>
-                        <label class="difflbl" for="easy"><div class="tick"></div></label>
-                        <label for="easy">Easy</label>
+                    <hr/>
+                    <div class="difficult">
+                        <div class="chckflx">
+                            <input type="checkbox" class="diffchck" id="easy" checked>
+                            <label class="difflbl" for="easy"><div class="tick"></div></label>
+                            <label for="easy">Easy</label>
+                        </div>
+                        <div class="chckflx">
+                            <input type="checkbox" class="diffchck" id="hard">
+                            <label class="difflbl" for="hard"><div class="tick"></div></label>
+                            <label for="hard">Hard</label>
+                        </div>
                     </div>
-                    <div class="chckflx">
-                        <input type="checkbox" class="diffchck" id="hard">
-                        <label class="difflbl" for="hard"><div class="tick"></div></label>
-                        <label for="hard">Hard</label>
-                    </div>
+                </label>
+                <button class="bttn" onclick="startGame()">Start Game</button>
+            </div>
+            <div id="game" style="display: none;">
+                <div id="board">
+                    <div class="cell" onclick="makeMove(0)"></div>
+                    <div class="cell" onclick="makeMove(1)"></div>
+                    <div class="cell" onclick="makeMove(2)"></div>
+                    <div class="cell" onclick="makeMove(3)"></div>
+                    <div class="cell" onclick="makeMove(4)"></div>
+                    <div class="cell" onclick="makeMove(5)"></div>
+                    <div class="cell" onclick="makeMove(6)"></div>
+                    <div class="cell" onclick="makeMove(7)"></div>
+                    <div class="cell" onclick="makeMove(8)"></div>
                 </div>
-            </label>
-            <button class="bttn" onclick="startGame()">Start Game</button>
-        </div>
-        <div id="game" style="display: none;">
-            <div id="board">
-                <div class="cell" onclick="makeMove(0)"></div>
-                <div class="cell" onclick="makeMove(1)"></div>
-                <div class="cell" onclick="makeMove(2)"></div>
-                <div class="cell" onclick="makeMove(3)"></div>
-                <div class="cell" onclick="makeMove(4)"></div>
-                <div class="cell" onclick="makeMove(5)"></div>
-                <div class="cell" onclick="makeMove(6)"></div>
-                <div class="cell" onclick="makeMove(7)"></div>
-                <div class="cell" onclick="makeMove(8)"></div>
+                <div id="scoreboard">
+                    <h2>Scoreboard</h2>
+                    <div class="score"><span class="scoreBoardSide">X</span> : <span id="playerX" > 0</span></div>
+                    <div class="score"><span class="scoreBoardSide">O</span> : <span id="playerO" > 0</span></div>
+                </div>
+                <button class="bttn" onclick="resetBoard()">Reset</button>
+                <button class="bttn" onclick="backToMain()">Main Page</button>
             </div>
-            <div id="scoreboard">
-                <h2>Scoreboard</h2>
-                <div class="score"><span class="scoreBoardSide">X</span> : <span id="playerX" > 0</span></div>
-                <div class="score"><span class="scoreBoardSide">O</span> : <span id="playerO" > 0</span></div>
+            <div id="gamePeople" style="display: none;">
+                <div id="boardPeople">
+                    <div class="cellPeople" onclick="personMove(0)"></div>
+                    <div class="cellPeople" onclick="personMove(1)"></div>
+                    <div class="cellPeople" onclick="personMove(2)"></div>
+                    <div class="cellPeople" onclick="personMove(3)"></div>
+                    <div class="cellPeople" onclick="personMove(4)"></div>
+                    <div class="cellPeople" onclick="personMove(5)"></div>
+                    <div class="cellPeople" onclick="personMove(6)"></div>
+                    <div class="cellPeople" onclick="personMove(7)"></div>
+                    <div class="cellPeople" onclick="personMove(8)"></div>
+                </div>
             </div>
-            <button class="bttn" onclick="resetBoard()">Reset</button>
-            <button class="bttn" onclick="backToMain()">Main Page</button>
-        </div>
-
         </div>  
         <div class="noContent"></div>
     </main>
