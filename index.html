@@ -70,6 +70,7 @@
                     <div class="score"><span class="scoreBoardSide">O</span> : <span id="playerO" > 0</span></div>
                 </div>
                 <button class="bttn" onclick="resetBoard()">Reset</button>
+                <button class="bttn" onclick="backToComputerSettings()">Settings</button>
                 <button class="bttn" onclick="backToMain()">Main Page</button>
             </div>
             <div id="gamePeople" style="display: none;">
@@ -84,6 +85,13 @@
                     <div class="cellPeople" onclick="personMove(7)"></div>
                     <div class="cellPeople" onclick="personMove(8)"></div>
                 </div>
+                <div id="scoreboard">
+                    <h2>Scoreboard</h2>
+                    <div class="score"><span class="scoreBoardSide">X</span> : <span id="player1" > 0</span></div>
+                    <div class="score"><span class="scoreBoardSide">O</span> : <span id="player2" > 0</span></div>
+                </div>
+                <button class="bttn" onclick="resetBoardPeople()">Reset</button>
+                <button class="bttn" onclick="backToMain()">Main Page</button>
             </div>
         </div>  
         <div class="noContent"></div>

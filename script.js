@@ -27,6 +27,7 @@ function personMove(index) {
     boardPeople[index] = curPlayer;
     moves++;
     cellsPeople[index].innerText = curPlayer;
+    cellsPeople[index].style.backgroundColor = curPlayer === 'X' ? '#F3AA60' : '#A0BFE0';
     //document.getElementsByClassName('cellPeople')[index].textContent = curPlayer;
     
   
@@ -35,7 +36,7 @@ function personMove(index) {
         setTimeout(() => {
             announceWinner(curPlayer) 
         },300);
-      
+        updateScorePeople();
       return;
     }
   
@@ -68,19 +69,71 @@ function checkWinner() {
   }
   
   function announceWinner(player) {
-    alert(`Player ${player} wins!`);
+    //alert(`Player ${player} wins!`);
+
+    Swal.fire({
+        text: curPlayer + ' wins!',
+        confirmButtonText: 'Continue',
+        confirmButtonColor: '#cc6b49',
+    }).then(function() {
+    
+            boardPeople = ['', '', '', '', '', '', '', '', ''];
+            curPlayer = 'X';
+            gameIsActive = true;
+            moves = 0;
+            cellsPeople.forEach(c => {
+              c.innerText = '';
+              c.style.backgroundColor = '#FAF0D7';
+            });
+          
+    });
   }
   
   function announceDraw() {
-    alert("It's a draw!");
+    //alert("It's a draw!");
+    Swal.fire({
+        text: 'It\'s a tie!',
+        confirmButtonText: 'Continue',
+        confirmButtonColor: '#cc6b49',
+    }).then(function() {
+    
+            boardPeople = ['', '', '', '', '', '', '', '', ''];
+            curPlayer = 'X';
+            gameIsActive = true;
+            cellsPeople.forEach(c => {
+              c.innerText = '';
+              c.style.backgroundColor = '#FAF0D7';
+            });
+          
+    });
   }
-  
+/*ScoreBoardPeople*/  
+let scorePlayer1 = 0;
+let scorePlayer2 = 0;
 
+  function updateScorePeople() {
+    if (curPlayer === 'X') {
+      scorePlayer1++;
+      document.getElementById('player1').textContent = `${scorePlayer1}`;
+    } else {
+      scorePlayer2++;
+      document.getElementById('player2').textContent = `${scorePlayer2}`;
+    }
+  }
 
-//score
-let scorePlayerX = 0;
-let scorePlayerO = 0;
-
+/*Reset Board People*/
+function resetBoardPeople() {
+    boardPeople = ['', '', '', '', '', '', '', '', ''];
+    curPlayer = 'X';
+    gameIsActive = true;
+    moves = 0;
+    cellsPeople.forEach(c => {
+        c.innerText = '';
+    c.style.backgroundColor = '#FAF0D7';
+  });
+  }
+    
+/*AGAINST COMPUTER*/
 //diff checked
 const inps=document.querySelectorAll(".diffchck");
 inps.forEach(e=>e.addEventListener("click",ev=>{
@@ -116,17 +169,6 @@ function startGame() {
     document.getElementById('game').classList.add("fadeIn");
 }
 
-function backToMain() {
-    document.getElementById('settings').style.display = 'block';
-    document.getElementById('game').style.display = 'none';
-    cells.forEach(cell => {
-        cell.style.backgroundColor = '#FAF0D7';
-      });
-    document.getElementById('playerX').textContent = `0`;
-    document.getElementById('playerO').textContent = `0`;
-    scorePlayerX = 0;
-    scorePlayerO= 0;
-}
 
 // Define the game board
 let board = ['', '', '', '', '', '', '', '', ''];
@@ -145,6 +187,10 @@ let currentPlayer = player;
 
 let gameActive = true;
 let difficultyLevel = 'easy';
+
+//score
+let scorePlayerX = 0;
+let scorePlayerO = 0;
 
 // Get DOM elements
 const cells = Array.from(document.getElementsByClassName('cell'));
@@ -322,6 +368,16 @@ function checkTie() {
     return !board.includes('');
 }
 
+function updateScore() {
+    if (currentPlayer === 'X') {
+      scorePlayerX++;
+      document.getElementById('playerX').textContent = `${scorePlayerX}`;
+    } else {
+      scorePlayerO++;
+      document.getElementById('playerO').textContent = `${scorePlayerO}`;
+    }
+  }
+
 // Reset the game board
 function resetBoard() {
     board = ['', '', '', '', '', '', '', '', ''];
@@ -334,12 +390,39 @@ function resetBoard() {
   }
   
 
-  function updateScore() {
-    if (currentPlayer === 'X') {
-      scorePlayerX++;
-      document.getElementById('playerX').textContent = `${scorePlayerX}`;
-    } else {
-      scorePlayerO++;
-      document.getElementById('playerO').textContent = `${scorePlayerO}`;
-    }
-  }
+  function backToComputerSettings() {
+    document.getElementById('settings').style.display = 'block';
+    document.getElementById('game').style.display = 'none';
+    cells.forEach(cell => {
+        cell.style.backgroundColor = '#FAF0D7';
+      });
+    document.getElementById('playerX').textContent = `0`;
+    document.getElementById('playerO').textContent = `0`;
+    scorePlayerX = 0;
+    scorePlayerO= 0;
+}
+
+function backToMain() {
+    document.getElementById('game').style.display = 'none';
+    document.getElementById('settings').style.display = 'none';
+    document.getElementById('gamePeople').style.display = 'none';
+    document.getElementById('betweenWho').style.display = 'flex';
+    cells.forEach(cell => {
+        cell.innerText = '';
+        cell.style.backgroundColor = '#FAF0D7';
+      });
+    document.getElementById('playerX').textContent = `0`;
+    document.getElementById('playerO').textContent = `0`;
+    scorePlayerX = 0;
+    scorePlayerO= 0;
+    moves = 0;
+    cellsPeople.forEach(c => {
+        c.innerText = '';
+    c.style.backgroundColor = '#FAF0D7';
+    });
+    document.getElementById('player1').textContent = `0`;
+    document.getElementById('player2').textContent = `0`;
+    scorePlayer1 = 0;
+    scorePlayer2 = 0;
+}
+
