@@ -1,72 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 @font-face {
-    font-family: bottleneck-regular;
-    src: url("fonts/Bottleneck.otf") format("opentype");
+	font-family: bottleneck-regular;
+	src: url("fonts/Bottleneck.otf") format("opentype");
 }
-body{
-    background-color: #ece6c2 ;
-    color:#6f5643;
-    text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+body {
+	background-color: #ece6c2;
+	color: #6f5643;
+	text-align: center;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	overflow-x: hidden;
 }
-.header-text{
-    font-family: 'bottleneck-regular', sans-serif;
-    font-weight: lighter;
-    color: #d2a24c;
-    text-shadow: 4px 4px #6f5643;
-    font-size: 24vw;
+
+.header-text {
+	font-family: 'bottleneck-regular', sans-serif;
+	font-weight: lighter;
+	color: #d2a24c;
+	text-shadow: 4px 4px #6f5643;
+	font-size: 24vw;
 }
 
 /*Settings Page*/
-.level h3{
+.level h3 {
 	font-size: 6vw;
-    font-family: 'Righteous', cursive;
+	font-family: 'Righteous', cursive;
 }
 
 hr {
-    border: none;
-    border-top: 3px double #333;
-    color: #333 !important;
-    overflow: visible;
-    text-align: center;
-    height: 5px !important;
-    width:50%;
-  }
-  
-  hr:after {
-    background: #ece6c2;
-    content: '§';
-    padding: 0 4px;
-    position: relative;
-    top: -13px;
-  }
-
-  /*Difficult Checks*/
-
-  :root {
-	--checkbox-size: 50px;
-	--bg-color: #ffa69e;
-	--checkbox-color:  #d2a24c;
-	--hover-color:  #6f5643;
-	--tick-color:  #d2a24c;
+	border: none;
+	border-top: 3px double #333;
+	color: #333 !important;
+	overflow: visible;
+	text-align: center;
+	height: 5px !important;
+	width: 50%;
 }
 
-.difficult{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .chckflx{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size:6vw;
-    font-family: 'Righteous', cursive;
-    margin:5px;
-  }
+hr:after {
+	background: #ece6c2;
+	content: '§';
+	padding: 0 4px;
+	position: relative;
+	top: -13px;
+}
+
+/*Difficult Checks*/
+
+:root {
+	--checkbox-size: 50px;
+	--bg-color: #ffa69e;
+	--checkbox-color: #d2a24c;
+	--hover-color: #6f5643;
+	--tick-color: #d2a24c;
+}
+
+.difficult {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.chckflx {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 6vw;
+	font-family: 'Righteous', cursive;
+	margin: 5px;
+}
 
 .difflbl {
 	display: inline-block;
@@ -83,6 +87,7 @@ hr {
 .difflbl:hover {
 	border-color: var(--hover-color);
 }
+
 input[type="checkbox"] {
 	position: absolute;
 	left: -1000px;
@@ -123,17 +128,18 @@ input[type="checkbox"] {
 	/*border-radius: 50%;*/
 }
 
-input[type="checkbox"]:checked + .difflbl .tick {
+input[type="checkbox"]:checked+.difflbl .tick {
 	opacity: 1;
 	-webkit-transform: rotate(45deg) scale(1);
 	-ms-transform: rotate(45deg) scale(1);
 	transform: rotate(45deg) scale(1);
 }
-input[type="checkbox"]:checked + .difflbl{
-  border-color: var(--hover-color);
+
+input[type="checkbox"]:checked+.difflbl {
+	border-color: var(--hover-color);
 }
 
-input[type="checkbox"]:focus + .difflbl {
+input[type="checkbox"]:focus+.difflbl {
 	-webkit-animation-name: cb-pop;
 	animation-name: cb-pop;
 	-webkit-animation-duration: 400ms;
@@ -149,14 +155,17 @@ input[type="checkbox"]:focus + .difflbl {
 		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
+
 	33% {
 		-webkit-transform: scale(0.9);
 		transform: scale(0.9);
 	}
+
 	66% {
 		-webkit-transform: scale(1.1);
 		transform: scale(1.1);
 	}
+
 	100% {
 		tranform: scale(1);
 	}
@@ -167,14 +176,17 @@ input[type="checkbox"]:focus + .difflbl {
 		-webkit-transform: scale(1);
 		transform: scale(1);
 	}
+
 	33% {
 		-webkit-transform: scale(0.9);
 		transform: scale(0.9);
 	}
+
 	66% {
 		-webkit-transform: scale(1.1);
 		transform: scale(1.1);
 	}
+
 	100% {
 		tranform: scale(1);
 	}
@@ -182,53 +194,58 @@ input[type="checkbox"]:focus + .difflbl {
 
 /*Buttons*/
 button {
-    margin-top: 10px;
-}
-.bttn{
-    border: 4px solid #282828;
-    padding: 1rem;
-    background-color: #cc6b49;
-    color:#282828;
-    font-weight: 700;
-  }
-
-  /*Game Page*/
-
-  #board,#boardPeople {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /*grid-gap: 10px;*/
-    width: 300px;
-    margin: auto;
+	margin-top: 10px;
 }
 
-.cell,.cellPeople {
-    width: 100px;
-    height: 100px;
-    background-color: #FAF0D7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 48px;
-    color: #74685f;
-    cursor: pointer;
-	border:2.5px solid #ece6c2;
-    border-radius: 15px;
-	margin:1px;
+.bttn {
+	border: 4px solid #282828;
+	padding: 1rem;
+	background-color: #cc6b49;
+	color: #282828;
+	font-weight: 700;
+}
+
+/*Game Page*/
+
+#board,
+#boardPeople {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	/*grid-gap: 10px;*/
+	width: 300px;
+	margin: auto;
+}
+
+.cell,
+.cellPeople {
+	width: 100px;
+	height: 100px;
+	background-color: #FAF0D7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 48px;
+	color: #74685f;
+	cursor: pointer;
+	border: 2.5px solid #ece6c2;
+	border-radius: 15px;
+	margin: 1px;
 }
 
 /*ScoreBoard*/
-#scoreboard{
+#scoreboard {
 	font-family: 'Righteous', cursive;
 }
-.score{
-	margin: 1rem auto ;
+
+.score {
+	margin: 1rem auto;
 	display: flex;
-    flex-direction: unset;
-    justify-content: center;
-    align-items: center;
+	flex-direction: unset;
+	justify-content: center;
+	align-items: center;
 }
-.scoreBoardSide{
+
+.scoreBoardSide {
 	border: 2px solid #6f5643;
 	width: 10%;
 	height: 30px;
@@ -238,38 +255,54 @@ button {
 	align-items: center;
 	margin-right: 5px;
 }
-.score #playerX,#playerO,#player1,#player2{
+
+.score #playerX,
+#playerO,
+#player1,
+#player2 {
 	width: 5%;
-	text-align: center;
 }
 
 /*Transition*/
 
-.fadeIn{
-    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 1s;
-  }
+.fadeIn {
+	animation: fadeIn;
+	/* referring directly to the animation's @keyframe declaration */
+	animation-duration: 1s;
+}
 
-/*Responsive*/ 
+/*Responsive*/
 
 /* Medium devices such as tablets (768px and up) */
 @media only screen and (min-width: 48em) {
-	.header-text{
+	.header-text {
 		font-size: 8vw;
 	}
-    .level h3{
-		font-size:3vw;
-		margin:0;
+
+	.level h3 {
+		font-size: 3vw;
+		margin: 0;
 	}
-    hr{
-        width: 30%;
-    }
-    .chckflx{
-		font-size:3vw;
+
+	hr {
+		width: 30%;
 	}
-    .scoreBoardSide{
-        width: 30px;
-    }
+
+	.chckflx {
+		font-size: 3vw;
+	}
+
+	.scoreBoardSide {
+		width: 30px;
+	}
+
+	.score #playerX,
+	#playerO,
+	#player1,
+	#player2 {
+		width: 30px;
+	}
+
 }
 
 /* Large devices such as laptops (1024px and up) */
@@ -280,45 +313,47 @@ button {
 
 /*SweetAlert*/
 
-.swal2-popup{
-    background-color: #ece6c2 !important;
+.swal2-popup {
+	background-color: #ece6c2 !important;
 }
-.swal2-html-container{
-    font-family: 'Righteous', cursive;
-    color: #6f5643;
-    font-size: 2em !important;
+
+.swal2-html-container {
+	font-family: 'Righteous', cursive;
+	color: #6f5643;
+	font-size: 2em !important;
 }
-.swal2-styled.swal2-confirm{
-border: 4px solid #282828 !important;
-padding: 1rem;
-background-color: #cc6b49 !important;
-color:#282828 !important;
-font-weight: 700;
-border-radius: 0 !important;
+
+.swal2-styled.swal2-confirm {
+	border: 4px solid #282828 !important;
+	padding: 1rem;
+	background-color: #cc6b49 !important;
+	color: #282828 !important;
+	font-weight: 700;
+	border-radius: 0 !important;
 }
 
 /*Between Who*/
-.between-who{
+.between-who {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
-.between-who-button{
+
+.between-who-button {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
-	background-color:#cc6b49;
+	background-color: #cc6b49;
 	border: 4px solid #282828;
-	color:#282828;
+	color: #282828;
 	padding: 1rem;
 	width: 100px;
 	margin: 0.25rem;
 }
-.between-who-button i{
+
+.between-who-button i {
 	margin: 0 1px;
 }
-
-

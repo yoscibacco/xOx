@@ -1,11 +1,12 @@
 /*MainPage*/
-function personToPerson(){
+function personToPerson() {
     document.getElementById('betweenWho').style.display = 'none';
     document.getElementById('gamePeople').style.display = 'block';
     document.getElementById('betweenWho').classList.add("fadeIn");
     document.getElementById('gamePeople').classList.add("fadeIn");
 }
-function personToComputer(){
+
+function personToComputer() {
     document.getElementById('betweenWho').style.display = 'none';
     document.getElementById('settings').style.display = 'block';
     document.getElementById('betweenWho').classList.add("fadeIn");
@@ -14,112 +15,118 @@ function personToComputer(){
 
 
 /*2 person*/
-let boardPeople = ['','','','','','','','',''];
+let boardPeople = ['', '', '', '', '', '', '', '', ''];
 let moves = 0;
-let curPlayer= 'X';
+let curPlayer = 'X';
 let gameIsActive = true;
 const cellsPeople = Array.from(document.getElementsByClassName('cellPeople'));
 // Add event listeners to each cell
 
 function personMove(index) {
-    if (gameIsActive && boardPeople[index] === ''){
-    
-    boardPeople[index] = curPlayer;
-    moves++;
-    cellsPeople[index].innerText = curPlayer;
-    cellsPeople[index].style.backgroundColor = curPlayer === 'X' ? '#F3AA60' : '#A0BFE0';
-    //document.getElementsByClassName('cellPeople')[index].textContent = curPlayer;
-    
-  
-    if (checkWinner()) {
-        gameIsActive = false;
-        setTimeout(() => {
-            announceWinner(curPlayer) 
-        },300);
-        updateScorePeople();
-      return;
-    }
-  
-    if (moves === 9) {
-        gameIsActive = false;
-      announceDraw();
-      return;
-    }
-    curPlayer = (curPlayer === 'X') ? 'O' : 'X';
+    if (gameIsActive && boardPeople[index] === '') {
+
+        boardPeople[index] = curPlayer;
+        moves++;
+        cellsPeople[index].innerText = curPlayer;
+        cellsPeople[index].style.backgroundColor = curPlayer === 'X' ? '#F3AA60' : '#A0BFE0';
+        //document.getElementsByClassName('cellPeople')[index].textContent = curPlayer;
+
+
+        if (checkWinner()) {
+            gameIsActive = false;
+            setTimeout(() => {
+                announceWinner(curPlayer)
+            }, 300);
+            updateScorePeople();
+            return;
+        }
+
+        if (moves === 9) {
+            gameIsActive = false;
+            announceDraw();
+            return;
+        }
+        curPlayer = (curPlayer === 'X') ? 'O' : 'X';
     }
 }
+
 function checkWinner() {
     const winConditions = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
-      [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
-      [0, 4, 8], [2, 4, 6] // diagonals
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8], // rows
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8], // columns
+        [0, 4, 8],
+        [2, 4, 6] // diagonals
     ];
-  
+
     for (let condition of winConditions) {
-      if (
-        boardPeople[condition[0]] !== '' &&
-        boardPeople[condition[0]] === boardPeople[condition[1]] &&
-        boardPeople[condition[0]] === boardPeople[condition[2]]
-      ) {
-        return true;
-      }
+        if (
+            boardPeople[condition[0]] !== '' &&
+            boardPeople[condition[0]] === boardPeople[condition[1]] &&
+            boardPeople[condition[0]] === boardPeople[condition[2]]
+        ) {
+            return true;
+        }
     }
-  
+
     return false;
-  }
-  
-  function announceWinner(player) {
+}
+
+function announceWinner(player) {
     //alert(`Player ${player} wins!`);
 
     Swal.fire({
         text: curPlayer + ' wins!',
         confirmButtonText: 'Continue',
         confirmButtonColor: '#cc6b49',
-    }).then(function() {
-    
-            boardPeople = ['', '', '', '', '', '', '', '', ''];
-            curPlayer = 'X';
-            gameIsActive = true;
-            moves = 0;
-            cellsPeople.forEach(c => {
-              c.innerText = '';
-              c.style.backgroundColor = '#FAF0D7';
-            });
-          
+    }).then(function () {
+
+        boardPeople = ['', '', '', '', '', '', '', '', ''];
+        curPlayer = 'X';
+        gameIsActive = true;
+        moves = 0;
+        cellsPeople.forEach(c => {
+            c.innerText = '';
+            c.style.backgroundColor = '#FAF0D7';
+        });
+
     });
-  }
-  
-  function announceDraw() {
+}
+
+function announceDraw() {
     //alert("It's a draw!");
     Swal.fire({
         text: 'It\'s a tie!',
         confirmButtonText: 'Continue',
         confirmButtonColor: '#cc6b49',
-    }).then(function() {
-    
-            boardPeople = ['', '', '', '', '', '', '', '', ''];
-            curPlayer = 'X';
-            gameIsActive = true;
-            cellsPeople.forEach(c => {
-              c.innerText = '';
-              c.style.backgroundColor = '#FAF0D7';
-            });
-          
+    }).then(function () {
+
+        boardPeople = ['', '', '', '', '', '', '', '', ''];
+        curPlayer = 'X';
+        gameIsActive = true;
+        cellsPeople.forEach(c => {
+            c.innerText = '';
+            c.style.backgroundColor = '#FAF0D7';
+        });
+
     });
-  }
-/*ScoreBoardPeople*/  
+}
+/*ScoreBoardPeople*/
 let scorePlayer1 = 0;
 let scorePlayer2 = 0;
 
-  function updateScorePeople() {
+function updateScorePeople() {
     if (curPlayer === 'X') {
-      scorePlayer1++;
-      document.getElementById('player1').textContent = `${scorePlayer1}`;
+        scorePlayer1++;
+        document.getElementById('player1').textContent = `${scorePlayer1}`;
     } else {
-      scorePlayer2++;
-      document.getElementById('player2').textContent = `${scorePlayer2}`;
+        scorePlayer2++;
+        document.getElementById('player2').textContent = `${scorePlayer2}`;
     }
-  }
+}
 
 /*Reset Board People*/
 function resetBoardPeople() {
@@ -129,22 +136,24 @@ function resetBoardPeople() {
     moves = 0;
     cellsPeople.forEach(c => {
         c.innerText = '';
-    c.style.backgroundColor = '#FAF0D7';
-  });
-  }
-    
+        c.style.backgroundColor = '#FAF0D7';
+    });
+}
+
 /*AGAINST COMPUTER*/
 //diff checked
-const inps=document.querySelectorAll(".diffchck");
-inps.forEach(e=>e.addEventListener("click",ev=>{
-  inps.forEach(c=>{if(c!==e) c.checked=false})
+const inps = document.querySelectorAll(".diffchck");
+inps.forEach(e => e.addEventListener("click", ev => {
+    inps.forEach(c => {
+        if (c !== e) c.checked = false
+    })
 }))
 
 
-$(function() { 
-    $('.diffchck').bind('click',function() {
-        if($(this).prop('checked') === false) {
-          $(this).prop('checked', true);
+$(function () {
+    $('.diffchck').bind('click', function () {
+        if ($(this).prop('checked') === false) {
+            $(this).prop('checked', true);
         }
         $('.diffchck').not(this).prop("checked", false);
     });
@@ -161,7 +170,7 @@ function startGame() {
     currentPlayer = player;
     gameActive = true;
     cells.forEach(cell => {
-      cell.innerText = '';
+        cell.innerText = '';
     });
     document.getElementById('settings').style.display = 'none';
     document.getElementById('game').style.display = 'block';
@@ -175,10 +184,15 @@ let board = ['', '', '', '', '', '', '', '', ''];
 
 // Define winning combinations
 const winningCombinations = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-    [0, 4, 8], [2, 4, 6] // Diagonals
-  ];
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8], // Rows
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8], // Columns
+    [0, 4, 8],
+    [2, 4, 6] // Diagonals
+];
 
 //Define players
 const player = 'X';
@@ -207,21 +221,21 @@ function makeMove(index) {
         if (checkWin()) {
             gameActive = false;
             setTimeout(() => {
-//                alert(currentPlayer + ' wins!');
+                //                alert(currentPlayer + ' wins!');
                 Swal.fire({
                     text: currentPlayer + ' wins!',
                     confirmButtonText: 'Continue',
                     confirmButtonColor: '#cc6b49',
-                }).then(function() {
-                
-                        board = ['', '', '', '', '', '', '', '', ''];
-                        currentPlayer = player;
-                        gameActive = true;
-                        cells.forEach(cell => {
-                          cell.innerText = '';
-                          cell.style.backgroundColor = '#FAF0D7';
-                        });
-                      
+                }).then(function () {
+
+                    board = ['', '', '', '', '', '', '', '', ''];
+                    currentPlayer = player;
+                    gameActive = true;
+                    cells.forEach(cell => {
+                        cell.innerText = '';
+                        cell.style.backgroundColor = '#FAF0D7';
+                    });
+
                 });
             }, 300);
             updateScore();
@@ -230,21 +244,21 @@ function makeMove(index) {
         if (checkTie()) {
             gameActive = false;
             setTimeout(() => {
-//                alert('It\'s a tie!');
+                //                alert('It\'s a tie!');
                 Swal.fire({
                     text: 'It\'s a tie!',
                     confirmButtonText: 'Continue',
                     confirmButtonColor: '#cc6b49',
-                }).then(function() {
-                
-                        board = ['', '', '', '', '', '', '', '', ''];
-                        currentPlayer = player;
-                        gameActive = true;
-                        cells.forEach(cell => {
-                          cell.innerText = '';
-                          cell.style.backgroundColor = '#FAF0D7';
-                        });
-                      
+                }).then(function () {
+
+                    board = ['', '', '', '', '', '', '', '', ''];
+                    currentPlayer = player;
+                    gameActive = true;
+                    cells.forEach(cell => {
+                        cell.innerText = '';
+                        cell.style.backgroundColor = '#FAF0D7';
+                    });
+
                 });
             }, 300);
             return;
@@ -341,9 +355,9 @@ function minimax(board, depth, isMaximizing) {
 function computerMove() {
     if (easy.checked == true) {
         computerMoveEasy();
-    } else if(hard.checked == true) {
+    } else if (hard.checked == true) {
         computerMoveHard();
-    } 
+    }
 }
 
 /* ---------------------------------------------------------- */
@@ -370,13 +384,13 @@ function checkTie() {
 
 function updateScore() {
     if (currentPlayer === 'X') {
-      scorePlayerX++;
-      document.getElementById('playerX').textContent = `${scorePlayerX}`;
+        scorePlayerX++;
+        document.getElementById('playerX').textContent = `${scorePlayerX}`;
     } else {
-      scorePlayerO++;
-      document.getElementById('playerO').textContent = `${scorePlayerO}`;
+        scorePlayerO++;
+        document.getElementById('playerO').textContent = `${scorePlayerO}`;
     }
-  }
+}
 
 // Reset the game board
 function resetBoard() {
@@ -384,22 +398,22 @@ function resetBoard() {
     currentPlayer = player;
     gameActive = true;
     cells.forEach(cell => {
-      cell.innerText = '';
-      cell.style.backgroundColor = '#FAF0D7';
+        cell.innerText = '';
+        cell.style.backgroundColor = '#FAF0D7';
     });
-  }
-  
+}
 
-  function backToComputerSettings() {
+
+function backToComputerSettings() {
     document.getElementById('settings').style.display = 'block';
     document.getElementById('game').style.display = 'none';
     cells.forEach(cell => {
         cell.style.backgroundColor = '#FAF0D7';
-      });
+    });
     document.getElementById('playerX').textContent = `0`;
     document.getElementById('playerO').textContent = `0`;
     scorePlayerX = 0;
-    scorePlayerO= 0;
+    scorePlayerO = 0;
 }
 
 function backToMain() {
@@ -410,19 +424,18 @@ function backToMain() {
     cells.forEach(cell => {
         cell.innerText = '';
         cell.style.backgroundColor = '#FAF0D7';
-      });
+    });
     document.getElementById('playerX').textContent = `0`;
     document.getElementById('playerO').textContent = `0`;
     scorePlayerX = 0;
-    scorePlayerO= 0;
+    scorePlayerO = 0;
     moves = 0;
     cellsPeople.forEach(c => {
         c.innerText = '';
-    c.style.backgroundColor = '#FAF0D7';
+        c.style.backgroundColor = '#FAF0D7';
     });
     document.getElementById('player1').textContent = `0`;
     document.getElementById('player2').textContent = `0`;
     scorePlayer1 = 0;
     scorePlayer2 = 0;
 }
-

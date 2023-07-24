@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!--<link rel="stylesheet" href="reset.css">-->
     <link rel="stylesheet" href="modern-normalize.css">
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
@@ -15,6 +16,7 @@
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/screen.css' rel='stylesheet'>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/user.css' rel='stylesheet'>
 </head>
+
 <body>
     <div class="header-text">Tic Tac Toe</div>
     <main>
@@ -36,16 +38,20 @@
                 <label class="level">
                     <h3>Choose Difficulty Level</h3>
 
-                    <hr/>
+                    <hr />
                     <div class="difficult">
                         <div class="chckflx">
                             <input type="checkbox" class="diffchck" id="easy" checked>
-                            <label class="difflbl" for="easy"><div class="tick"></div></label>
+                            <label class="difflbl" for="easy">
+                                <div class="tick"></div>
+                            </label>
                             <label for="easy">Easy</label>
                         </div>
                         <div class="chckflx">
                             <input type="checkbox" class="diffchck" id="hard">
-                            <label class="difflbl" for="hard"><div class="tick"></div></label>
+                            <label class="difflbl" for="hard">
+                                <div class="tick"></div>
+                            </label>
                             <label for="hard">Hard</label>
                         </div>
                     </div>
@@ -66,8 +72,8 @@
                 </div>
                 <div id="scoreboard">
                     <h2>Scoreboard</h2>
-                    <div class="score"><span class="scoreBoardSide">X</span> : <span id="playerX" > 0</span></div>
-                    <div class="score"><span class="scoreBoardSide">O</span> : <span id="playerO" > 0</span></div>
+                    <div class="score"><span class="scoreBoardSide">X</span> : <span id="playerX"> 0</span></div>
+                    <div class="score"><span class="scoreBoardSide">O</span> : <span id="playerO"> 0</span></div>
                 </div>
                 <button class="bttn" onclick="resetBoard()">Reset</button>
                 <button class="bttn" onclick="backToComputerSettings()">Settings</button>
@@ -87,15 +93,16 @@
                 </div>
                 <div id="scoreboard">
                     <h2>Scoreboard</h2>
-                    <div class="score"><span class="scoreBoardSide">X</span> : <span id="player1" > 0</span></div>
-                    <div class="score"><span class="scoreBoardSide">O</span> : <span id="player2" > 0</span></div>
+                    <div class="score"><span class="scoreBoardSide">X</span> : <span id="player1"> 0</span></div>
+                    <div class="score"><span class="scoreBoardSide">O</span> : <span id="player2"> 0</span></div>
                 </div>
                 <button class="bttn" onclick="resetBoardPeople()">Reset</button>
                 <button class="bttn" onclick="backToMain()">Main Page</button>
             </div>
-        </div>  
+        </div>
         <div class="noContent"></div>
     </main>
     <script src="script.js"></script>
 </body>
+
 </html>
