@@ -65,11 +65,12 @@ hr:after {
 .chckflx {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	font-size: 6vw;
 	font-family: 'Righteous', cursive;
 	margin: 5px;
+	width: 160px;
 }
 
 .difflbl {
@@ -271,45 +272,6 @@ button {
 	animation-duration: 1s;
 }
 
-/*Responsive*/
-
-/* Medium devices such as tablets (768px and up) */
-@media only screen and (min-width: 48em) {
-	.header-text {
-		font-size: 8vw;
-	}
-
-	.level h3 {
-		font-size: 3vw;
-		margin: 0;
-	}
-
-	hr {
-		width: 30%;
-	}
-
-	.chckflx {
-		font-size: 3vw;
-	}
-
-	.scoreBoardSide {
-		width: 30px;
-	}
-
-	.score #playerX,
-	#playerO,
-	#player1,
-	#player2 {
-		width: 30px;
-	}
-
-}
-
-/* Large devices such as laptops (1024px and up) */
-@media only screen and (min-width: 64em) {}
-
-/* Largest devices such as desktops (1280px and up) */
-@media only screen and (min-width: 80em) {}
 
 /*SweetAlert*/
 
@@ -357,3 +319,81 @@ button {
 .between-who-button i {
 	margin: 0 1px;
 }
+
+/*TURN*/
+#turn{
+	font-size:4vw;
+	font-weight: 700;
+	font-family: 'Righteous', cursive;
+	padding: 5px;
+	margin:0 25%;
+	text-align: center;
+}
+
+
+/*Responsive*/
+/* Medium devices such as tablets (540x and up) */
+@media only screen and (min-width: 33.75em) {
+	.chckflx {
+		width: 200px;
+	}
+}
+
+/* Medium devices such as tablets (667x and up) */
+@media only screen and (min-width: 41.6875em) {
+	.header-text{
+		font-size: 10vw;
+	}
+	.level h3 {
+		font-size: 4vw;
+	}
+	.chckflx {
+		font-size: 4vw;
+	}
+}
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 48em) {
+	.header-text {
+		font-size: 8vw;
+	}
+
+	.level h3 {
+		font-size: 3vw;
+		margin: 0;
+	}
+
+	hr {
+		width: 30%;
+	}
+
+	.chckflx {
+		font-size: 3vw;
+	}
+
+	#turn{
+		font-size:2vw;
+	}
+	.scoreBoardSide {
+		width: 30px;
+	}
+
+	.score #playerX,
+	#playerO,
+	#player1,
+	#player2 {
+		width: 30px;
+	}
+	.chckflx {
+		width: 250px;
+	}
+}
+
+/* Large devices such as laptops (1024px and up) */
+@media only screen and (min-width: 64em) {
+	.chckflx {
+		width: 350px;
+	}
+}
+
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 80em) {}

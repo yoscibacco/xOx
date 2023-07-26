@@ -15,6 +15,9 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/screen.css' rel='stylesheet'>
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/user.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/more-vertical-o.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/edit-black-point.css' rel='stylesheet'>
+    <link rel="stylesheet" href="drop.css">
 </head>
 
 <body>
@@ -22,6 +25,7 @@
     <main>
         <div class="noContent"></div>
         <div class="content">
+            <!--BETWEEN WHO-->
             <div class="between-who" id="betweenWho">
                 <button class="between-who-button" onclick="personToPerson()">
                     <i class="gg-user"></i>
@@ -34,6 +38,8 @@
                     <i class="gg-screen"></i>
                 </button>
             </div>
+            <!---->
+            <!--AGAINST COMPUTER DIFFICULT-->
             <div id="settings" style="display: none;">
                 <label class="level">
                     <h3>Choose Difficulty Level</h3>
@@ -48,6 +54,13 @@
                             <label for="easy">Easy</label>
                         </div>
                         <div class="chckflx">
+                            <input type="checkbox" class="diffchck" id="medium">
+                            <label class="difflbl" for="medium">
+                                <div class="tick"></div>
+                            </label>
+                            <label for="medium">Medium</label>
+                        </div>
+                        <div class="chckflx">
                             <input type="checkbox" class="diffchck" id="hard">
                             <label class="difflbl" for="hard">
                                 <div class="tick"></div>
@@ -58,7 +71,10 @@
                 </label>
                 <button class="bttn" onclick="startGame()">Start Game</button>
             </div>
+            <!---->
+            <!--AGAINST COMPUTER-->
             <div id="game" style="display: none;">
+                <div id="turn"></div>
                 <div id="board">
                     <div class="cell" onclick="makeMove(0)"></div>
                     <div class="cell" onclick="makeMove(1)"></div>
@@ -75,10 +91,19 @@
                     <div class="score"><span class="scoreBoardSide">X</span> : <span id="playerX"> 0</span></div>
                     <div class="score"><span class="scoreBoardSide">O</span> : <span id="playerO"> 0</span></div>
                 </div>
-                <button class="bttn" onclick="resetBoard()">Reset</button>
-                <button class="bttn" onclick="backToComputerSettings()">Settings</button>
-                <button class="bttn" onclick="backToMain()">Main Page</button>
+                <div class="sec-center">
+                    <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+                    <label class="for-dropdown" for="dropdown">Menu <i class="gg-more-vertical-o"></i></label>
+                    <div class="section-dropdown">
+                        <a href="#" onclick="resetBoard()"><i class="gg-edit-black-point"></i>Reset Board</a>
+                        <a href="#" onclick="resetAll()"><i class="gg-edit-black-point"></i>Reset All</a>
+                        <a href="#" onclick="backToComputerSettings()"><i class="gg-edit-black-point"></i>Choose Difficulty</a>
+                        <a href="#" onclick="backToMain()"><i class="gg-edit-black-point"></i>Main Page</a>
+                    </div>
+                </div>
             </div>
+            <!---->
+            <!--2 PERSON-->            
             <div id="gamePeople" style="display: none;">
                 <div id="boardPeople">
                     <div class="cellPeople" onclick="personMove(0)"></div>
@@ -96,9 +121,19 @@
                     <div class="score"><span class="scoreBoardSide">X</span> : <span id="player1"> 0</span></div>
                     <div class="score"><span class="scoreBoardSide">O</span> : <span id="player2"> 0</span></div>
                 </div>
-                <button class="bttn" onclick="resetBoardPeople()">Reset</button>
-                <button class="bttn" onclick="backToMain()">Main Page</button>
+                <!---->
+                <div class="sec-center-people">
+                    <input class="dropdown-people" type="checkbox" id="dropdown-people" name="dropdown-people" />
+                    <label class="for-dropdown-people" for="dropdown-people">Menu <i class="gg-more-vertical-o"></i></label>
+                    <div class="section-dropdown-people">
+                        <a href="#" onclick="resetBoardPeople()"><i class="gg-edit-black-point"></i>Reset Board</a>
+                        <a href="#" onclick="resetAllPeople()"><i class="gg-edit-black-point"></i>Reset All</a>
+                        <a href="#" onclick="backToMain()"><i class="gg-edit-black-point"></i>Main Page</a>
+                    </div>
+                </div>
+                <!---->
             </div>
+            <!---->
         </div>
         <div class="noContent"></div>
     </main>

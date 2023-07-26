@@ -155,7 +155,6 @@ function resetAllPeople() {
     scorePlayer2 = 0;
 }
 /*AGAINST COMPUTER*/
-const turn = document.getElementById('turn');
 //diff checked
 const inps = document.querySelectorAll(".diffchck");
 inps.forEach(e => e.addEventListener("click", ev => {
@@ -191,7 +190,6 @@ function startGame() {
     document.getElementById('game').style.display = 'block';
     document.getElementById('settings').classList.add("fadeIn");
     document.getElementById('game').classList.add("fadeIn");
-    turn.textContent = `${currentPlayer}'s turn`;
 }
 
 
@@ -234,7 +232,6 @@ function makeMove(index) {
         board[index] = currentPlayer;
         cells[index].innerText = currentPlayer;
         cells[index].style.backgroundColor = currentPlayer === player ? '#F3AA60' : '#A0BFE0';
-        turn.textContent = `${currentPlayer}'s turn`;
         if (checkWin()) {
             gameActive = false;
             setTimeout(() => {
@@ -252,7 +249,7 @@ function makeMove(index) {
                         cell.innerText = '';
                         cell.style.backgroundColor = '#FAF0D7';
                     });
-                    turn.textContent = `${currentPlayer}'s turn`;
+
                 });
             }, 300);
             updateScore();
@@ -275,17 +272,14 @@ function makeMove(index) {
                         cell.innerText = '';
                         cell.style.backgroundColor = '#FAF0D7';
                     });
-                    turn.textContent = `${currentPlayer}'s turn`;
+
                 });
             }, 300);
             return;
         }
-
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        turn.textContent = `${currentPlayer}'s turn`;
         if (currentPlayer === computer) {
             computerMove();
-
         }
         /**/
     }
@@ -305,75 +299,7 @@ function computerMoveEasy() {
 
 /* ---------------------------------------------------------- */
 // Function for the computer's move (Medium Difficulty)
-function computerMoveMedium() {
-    let bestScore = -Infinity;
-    let bestMove;
-    for (let i = 0; i < board.length; i++) {
-        if (board[i] === '') {
-            board[i] = currentPlayer;
-            let score = minimax(board, 0, false);
-            board[i] = '';
-            if (score > bestScore) {
-                bestScore = score;
-                bestMove = i;
-            }
-        }
-    }
-    setTimeout(() => {
-        makeMove(bestMove);
-    }, 300);
-    function getRandomMove(board) {
-        const emptyIndices = [];
-        for (let i = 0; i < board.length; i++) {
-            if (board[i] === '') {
-                emptyIndices.push(i);
-            }
-        }
-        return emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
-    }
-    
-    function minimax(board, depth, isMaximizing) {
-        if (checkWin()) {
-            return isMaximizing ? -10 + depth : 10 - depth;
-        }
-        if (checkTie()) {
-            return 0;
-        }
-        if (isMaximizing) {
-            let bestScore = -Infinity;
-            for (let i = 0; i < board.length; i++) {
-                if (board[i] === '') {
-                    board[i] = currentPlayer;
-                    let score = minimax(board, depth + 1, false);
-                    board[i] = '';
-                    bestScore = Math.max(score, bestScore);
-                }
-            }
-            return bestScore;
-        } else {
-            let bestScore = Infinity;
-            // Introduce randomness for the AI's move
-            if (Math.random() < 0.2) { // You can adjust the probability (0.2 means 20% chance of random move)
-                let randomMove = getRandomMove(board);
-                board[randomMove] = currentPlayer === 'X' ? 'O' : 'X';
-                let score = minimax(board, depth + 1, true);
-                board[randomMove] = '';
-                bestScore = Math.min(score, bestScore);
-            } else {
-                for (let i = 0; i < board.length; i++) {
-                    if (board[i] === '') {
-                        board[i] = currentPlayer === 'X' ? 'O' : 'X';
-                        let score = minimax(board, depth + 1, true);
-                        board[i] = '';
-                        bestScore = Math.min(score, bestScore);
-                    }
-                }
-            }
-            return bestScore;
-        }
-    }
-    
-}
+
 
 
 /* ---------------------------------------------------------- */
@@ -397,6 +323,16 @@ function computerMoveHard() {
     }, 300);
 }
 
+function getRandomMove(board) {
+    const emptyIndices = [];
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === '') {
+            emptyIndices.push(i);
+        }
+    }
+    return emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+}
+
 function minimax(board, depth, isMaximizing) {
     if (checkWin()) {
         return isMaximizing ? -10 + depth : 10 - depth;
@@ -417,12 +353,21 @@ function minimax(board, depth, isMaximizing) {
         return bestScore;
     } else {
         let bestScore = Infinity;
-        for (let i = 0; i < board.length; i++) {
-            if (board[i] === '') {
-                board[i] = currentPlayer === 'X' ? 'O' : 'X';
-                let score = minimax(board, depth + 1, true);
-                board[i] = '';
-                bestScore = Math.min(score, bestScore);
+        // Introduce randomness for the AI's move
+        if (Math.random() < 0.2) { // You can adjust the probability (0.2 means 20% chance of random move)
+            let randomMove = getRandomMove(board);
+            board[randomMove] = currentPlayer === 'X' ? 'O' : 'X';
+            let score = minimax(board, depth + 1, true);
+            board[randomMove] = '';
+            bestScore = Math.min(score, bestScore);
+        } else {
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === '') {
+                    board[i] = currentPlayer === 'X' ? 'O' : 'X';
+                    let score = minimax(board, depth + 1, true);
+                    board[i] = '';
+                    bestScore = Math.min(score, bestScore);
+                }
             }
         }
         return bestScore;
@@ -443,9 +388,7 @@ function minimax(board, depth, isMaximizing) {
 function computerMove() {
     if (easy.checked == true) {
         computerMoveEasy();
-    } else if (medium.checked == true) {
-        computerMoveMedium();
-    } else if(hard.checked == true){
+    } else if (hard.checked == true) {
         computerMoveHard();
     }
 }
@@ -491,9 +434,7 @@ function resetBoard() {
         cell.innerText = '';
         cell.style.backgroundColor = '#FAF0D7';
     });
-    turn.textContent = `${currentPlayer}'s turn`;
 }
-
 function resetAll() {
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = player;
@@ -519,7 +460,6 @@ function backToComputerSettings() {
     document.getElementById('playerO').textContent = `0`;
     scorePlayerX = 0;
     scorePlayerO = 0;
-    document.getElementById('dropdown').checked = false;
 }
 
 function backToMain() {
@@ -546,5 +486,5 @@ function backToMain() {
     scorePlayer1 = 0;
     scorePlayer2 = 0;
     document.getElementById('dropdown').checked = false;
-    document.getElementById('dropdown-people').checked = false;
+
 }
